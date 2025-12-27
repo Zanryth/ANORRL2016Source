@@ -3,6 +3,7 @@
 #include "MainDialog.h"
 #include "atlsync.h"
 #include "boost/thread.hpp"
+#include "commctrl.h"
 
 // Vista TaskDialog!
 // Because TaskDialog is modal, we put it into another thread :)

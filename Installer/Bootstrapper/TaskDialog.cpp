@@ -3,7 +3,8 @@
 #include "TaskDialog.h"
 #include <boost/thread/thread.hpp>
 #include <boost/bind.hpp>
-#include <commctrl.h>
+#include <CommCtrl.h>
+#pragma comment(lib,"comctl32.lib")
 
 #ifndef PBST_NORMAL
 #define PBST_NORMAL             0x0001
