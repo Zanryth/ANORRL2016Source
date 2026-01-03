@@ -1787,6 +1787,9 @@
     <ClCompile Include="v8datamodel\Attachment.cpp">
       <Filter>Source Files\V8DataModel Source</Filter>
     </ClCompile>
+    <ClCompile Include="DiscordHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Lua-5.1.4\src\lapi.h">
@@ -3672,6 +3675,9 @@
     </ClInclude>
     <ClInclude Include="include\v8datamodel\Attachment.h">
       <Filter>Header Files\V8DataModel Header</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DiscordHandler.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

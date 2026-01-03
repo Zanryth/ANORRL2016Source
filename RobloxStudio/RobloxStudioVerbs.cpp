@@ -1958,14 +1958,14 @@ void ScreenshotVerb::showPostImageWebDialog()
     if (!m_spDataModel)
         return;
 
-	QString url = QString("%1/UploadMedia/PostImage.aspx?from=client&rand=%2&seostr=%3&filename=%4").arg(RobloxSettings::getBaseURL())
+	/*QString url = QString("%1/UploadMedia/PostImage.aspx?from=client&rand=%2&seostr=%3&filename=%4").arg(RobloxSettings::getBaseURL())
 																									.arg(rand())
 																									.arg(getSEOStr())
 																									.arg(m_fileToUpload);
 
 	WebDialog *pWebDialog = new WebDialog(&UpdateUIManager::Instance().getMainWindow(), url, m_spDataModel.get());
 	pWebDialog->exec();
-	pWebDialog->deleteLater();
+	pWebDialog->deleteLater();*/
 
 	UpdateUIManager::Instance().updateToolBars();
 }
@@ -2154,14 +2154,14 @@ void RecordToggleVerb::doIt(RBX::IDataState*)
 
 void RecordToggleVerb::uploadVideo()
 {
-	char n[16];
+	/*char n[16];
 	itoa(rand(), n, 10);
 	QString url = QString("%1/UploadMedia/UploadVideo.aspx?from=client&rand=").arg(RobloxSettings::getBaseURL());
 	url.append(n);
 
 	WebDialog *pWebDialog = new WebDialog(&UpdateUIManager::Instance().getMainWindow(), url, m_pDataModel);
 	pWebDialog->exec();
-	pWebDialog->deleteLater();
+	pWebDialog->deleteLater();*/
 
 	m_bIsBusy = false;
 	UpdateUIManager::Instance().updateToolBars();

@@ -121,6 +121,8 @@
 #include "Util/RobloxGoogleAnalytics.h"
 #include "StudioDeviceEmulator.h"
 
+#include "DiscordHandler.h"
+
 FASTFLAGVARIABLE(StudioCheckForUpgradeEnabled, false)
 FASTFLAGVARIABLE(StudioSeparateActionByActivationMethod, false)
 FASTFLAGVARIABLE(StudioFixMacStartPage, false)
@@ -302,7 +304,7 @@ RobloxMainWindow::RobloxMainWindow(const QMap<QString, QString> argMap)
         m_pTextOutput = new RobloxTextOutputWidget(dockWidgetContents_2);
 		
 		RBX::Http robloxRequest(AuthenticationHelper::getLoggedInUserUrl().toStdString());
-		RBX::Http externalRequest("http://www.google.com");
+		RBX::Http externalRequest("");
 
 		QSettings retentionData("ANORRL", "Retention");
 
@@ -671,6 +673,8 @@ RobloxMainWindow::RobloxMainWindow(const QMap<QString, QString> argMap)
         RobloxKeyboardConfig::singleton().storeDefaults(*this);
         RobloxKeyboardConfig::singleton().loadKeyboardConfig(*this);
         RobloxMouseConfig::singleton().loadMouseConfig();
+
+		RBX::DiscordHandler::Initialise("1456345979635892400");
 
 		m_IsInitialized = true;
 	}
@@ -1237,7 +1241,7 @@ void RobloxMainWindow::openStartPage(bool checked, QString optionalQueryParams /
 			}				
 		}
 		else
-			fileToOpen = QString::fromStdString(GetBaseURL() + "/My/Places.aspx");
+			fileToOpen = QString::fromStdString(GetBaseURL() + "/my/places");
 
 		if (!optionalQueryParams.isEmpty())
 			fileToOpen.append("&").append(optionalQueryParams);
@@ -1524,7 +1528,7 @@ void RobloxMainWindow::about()
 {
 	QString aboutMsg(tr("<div style=\"text-align: center\">"));
 	aboutMsg.append(tr("<p style=\"font-weight: bold\">"));
-    aboutMsg.append(tr("ROBLOX Studio "));
+    aboutMsg.append(tr("ANORRL Studio "));
 	aboutMsg.append(tr("Version %1</p>"));
 
 #if defined(_NOOPT) || defined(_DEBUG) 
@@ -2660,6 +2664,24 @@ void RobloxMainWindow::updateWindowTitle()
         setWindowTitle(sWindow_Title);
     else
     {
+		std::string docTypeString = "";
+		
+		switch (pDoc->docType()) {
+		case IRobloxDoc::RBXDocType::BROWSER:
+			docTypeString = "Browsing";
+			break;
+		case IRobloxDoc::RBXDocType::IDE:
+			docTypeString = "Developing";
+			break;
+		case IRobloxDoc::RBXDocType::SCRIPT:
+			docTypeString = "Scripting";
+			break;
+		case IRobloxDoc::RBXDocType::OBJECTBROWSER:
+			docTypeString = "Browsing";
+			break;
+		}
+
+		RBX::DiscordHandler::SetDetails(docTypeString, pDoc->displayName().toStdString());
 		setWindowTitle(pDoc->windowTitle() + " - " + QString(sWindow_Title));
     }
 }
@@ -2682,6 +2704,7 @@ QString RobloxMainWindow::getDialogTitle() const
  */
 void RobloxMainWindow::onMinuteTimer()
 {
+	RBX::DiscordHandler::Callback(); // PERFECT I THINK.
 	// prevent re-entrancy
     static bool processing = false;
     if ( processing )

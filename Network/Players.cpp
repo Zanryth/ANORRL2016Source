@@ -102,6 +102,9 @@ static Reflection::BoundFuncDesc<Players, shared_ptr<Instance>(int)> func_GetPla
 
 Reflection::PropDescriptor<Players, bool> Players::propCharacterAutoSpawn("CharacterAutoLoads", category_Behavior, &Players::getCharacterAutoSpawnProperty, &Players::setCharacterAutoSpawnProperty, Reflection::PropertyDescriptor::STANDARD_NO_REPLICATE);
 
+Reflection::PropDescriptor<Players, bool> Players::propEmoteSoundsEnabled("EmoteSoundsEnabled", category_Behavior, &Players::getEmoteSoundsEnabledProperty, &Players::setEmoteSoundsEnabledProperty, Reflection::PropertyDescriptor::STANDARD_NO_REPLICATE);
+Reflection::PropDescriptor<Players, bool> Players::propArbysChickenEnabled("ArbysChibkenEnabled", category_Behavior, &Players::getArbysChickenEnabledProperty, &Players::setArbysChickenEnabledProperty, Reflection::PropertyDescriptor::STANDARD_NO_REPLICATE);
+
 static Reflection::BoundFuncDesc<Players, void(std::string)> funcChat(&Players::chat, "Chat", "message", Security::Plugin);
 static Reflection::BoundFuncDesc<Players, void(std::string)> funcTeamChat(&Players::teamChat, "TeamChat", "message", Security::Plugin);
 static Reflection::BoundFuncDesc<Players, void(std::string, shared_ptr<Instance>)> funcPlayerChat(&Players::whisperChat, "WhisperChat", "message", "player", Security::LocalUser);
@@ -1484,6 +1487,25 @@ bool Players::getShouldAutoSpawnCharacter() const
 	return !isCloudEdit(this) && characterAutoSpawn;
 }
 
+void Players::setEmoteSoundsEnabledProperty(bool value)
+{
+	if (value != emoteSoundsEnabled)
+	{
+		emoteSoundsEnabled = value;
+		raisePropertyChanged(propEmoteSoundsEnabled);
+	}
+}
+
+void Players::setArbysChickenEnabledProperty(bool value)
+{
+	if (value != arbysChickenEnabled)
+	{
+		arbysChickenEnabled = value;
+		raisePropertyChanged(propArbysChickenEnabled);
+	}
+}
+
+
 void Players::loadLocalPlayerGuis()
 {
 	//Fixes issues with characterAutoSpawn not giving guis.
@@ -2069,7 +2091,8 @@ void Players::onRemoteSysStats(int userId, const std::string& stat, const std::s
 			if (willKick) {
 				//Shut. It. Down.
 				StandardOut::singleton()->printf(MESSAGE_INFO, "Players::onRemoteSysStats disconnect not in the clist");
-				disconnectPlayer(userId, Replicator::DisconnectReason_OnRemoteSysStats);
+				// AHA!
+				//disconnectPlayer(userId, Replicator::DisconnectReason_OnRemoteSysStats);
 			}
 		}
 		return;

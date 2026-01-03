@@ -40,6 +40,7 @@
 #include "IRobloxDoc.h"
 #include "ScriptComboBox.h"
 #include "RobloxRibbonMainWindow.h"
+#include "DiscordHandler.h"
 
 static const char* FileLocationArgument = "-fileLocation";
 static const char* ScriptArgument       = "-script";

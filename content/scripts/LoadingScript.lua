@@ -15,6 +15,7 @@ local startTime = tick()
 
 local COLORS = {
 	BLACK = Color3.new(0, 0, 0),
+	COOLERBLACK = Color3.new(40/255, 40/255, 40/255),
 	BACKGROUND_COLOR = Color3.new(45/255, 45/255, 45/255),
 	WHITE = Color3.new(1, 1, 1),
 	ERROR = Color3.new(253/255,68/255,72/255)
@@ -194,7 +195,7 @@ local function createTenfootCancelGui()
 		BackgroundTransparency = 1;
 		FontSize = Enum.FontSize.Size36;
 		TextXAlignment = Enum.TextXAlignment.Right;
-		TextColor3 = COLORS.WHITE;
+		TextColor3 = COLORS.COOLERBLACK;
 		Text = "Cancel";
 	}
 
@@ -296,7 +297,7 @@ function MainGui:GenerateMain()
 				Font = Enum.Font.SourceSans,
 				FontSize = (isMobile == true and Enum.FontSize.Size12 or Enum.FontSize.Size18),
 				TextWrapped = true,
-				TextColor3 = COLORS.WHITE,
+				TextColor3 = COLORS.COOLERBLACK,
 				TextXAlignment = Enum.TextXAlignment.Left,
 				Visible = not isTenFootInterface,
 				Text = "Loading...",
@@ -320,7 +321,7 @@ function MainGui:GenerateMain()
 				Font = Enum.Font.SourceSansBold,
 				FontSize = Enum.FontSize.Size18,
 				TextWrapped = true,
-				TextColor3 = COLORS.WHITE,
+				TextColor3 = COLORS.COOLERBLACK,
 				Text = "",
 				ZIndex = 2,
 				Parent = uiMessageFrame,
@@ -344,8 +345,8 @@ function MainGui:GenerateMain()
 				FontSize = (isTenFootInterface and Enum.FontSize.Size48 or Enum.FontSize.Size24),
 				TextWrapped = true,
 				TextScaled = true,
-				TextColor3 = COLORS.WHITE,
-				TextStrokeTransparency = 0,
+				TextColor3 = COLORS.COOLERBLACK,
+				TextStrokeTransparency = 1,
 				Text = "",
 				TextXAlignment = Enum.TextXAlignment.Left,
 				TextYAlignment = Enum.TextYAlignment.Bottom,
@@ -363,7 +364,7 @@ function MainGui:GenerateMain()
 					FontSize = Enum.FontSize.Size36,
 					TextScaled = true,
 					TextColor3 = COLORS.WHITE,
-					TextStrokeTransparency = 0,
+					TextStrokeTransparency = 1,
 					Text = "By",
 					TextXAlignment = Enum.TextXAlignment.Left,
 					TextYAlignment = Enum.TextYAlignment.Top,
@@ -393,8 +394,8 @@ function MainGui:GenerateMain()
 				FontSize = (isTenFootInterface and Enum.FontSize.Size36 or Enum.FontSize.Size18),
 				TextWrapped = true,
 				TextScaled = true,
-				TextColor3 = COLORS.WHITE,
-				TextStrokeTransparency = 0,
+				TextColor3 = COLORS.COOLERBLACK,
+				TextStrokeTransparency = 1,
 				Text = "",
 				TextXAlignment = Enum.TextXAlignment.Left,
 				TextYAlignment = Enum.TextYAlignment.Top,

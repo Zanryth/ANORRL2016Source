@@ -61,7 +61,7 @@ namespace RBX {
 
 		const LPWSTR RbxVideoId = L"RBXVideo";
 		const LPWSTR VideoFileExt = L"wmv";
-		const LPWSTR ProcTitle = L"robloxapp";
+		const LPWSTR ProcTitle = L"anorrlapp";
 		const LPWSTR RbxAudioId = L"RBXAudio";
 		const int MaxWaitTime = 500; //2fps is very bad
 		const int MaxFramesQueue = 5; // no more than 5 frames kept (will prevent out of memory on slow machines)

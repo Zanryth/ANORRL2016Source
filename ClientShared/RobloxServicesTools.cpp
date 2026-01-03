@@ -181,7 +181,7 @@ std::string BuildGenericPersistenceUrl(const std::string& baseUrl, const std::st
     std::string constructedURLDomain(baseUrl);
     std::string constructedServicePath(servicePath);
 
-	constructedURLDomain = ReplaceTopSubdomain(constructedURLDomain, "gamepersistence");
+	constructedURLDomain = ReplaceTopSubdomain(constructedURLDomain, "arl");
     if (!boost::algorithm::ends_with(constructedURLDomain, "/"))
     {
         constructedURLDomain.append("/");
@@ -194,7 +194,7 @@ std::string BuildGenericGameUrl(const std::string& baseUrl, const std::string &s
     std::string constructedURLDomain(baseUrl);
     std::string constructedServicePath(servicePath);
 	
-	constructedURLDomain = ReplaceTopSubdomain(constructedURLDomain, "assetgame");
+	constructedURLDomain = ReplaceTopSubdomain(constructedURLDomain, "arl");
     if (!boost::algorithm::ends_with(constructedURLDomain, "/"))
     {
         constructedURLDomain.append("/");

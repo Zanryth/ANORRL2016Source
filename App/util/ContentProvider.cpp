@@ -152,7 +152,7 @@ namespace RBX {
 					apiBaseUrl.replace(foundPos,4,"https");
 				}
 			}
-            return apiBaseUrl;
+			return ReplaceTopSubdomain(apiBaseUrl, "arl");
 		}
 
 		return baseUrl;

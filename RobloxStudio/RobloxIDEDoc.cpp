@@ -1709,6 +1709,7 @@ void RobloxIDEDoc::activate()
 
 	if (dataModel)
 	{
+		
 		RBX::Workspace* workspace = dataModel->getWorkspace();
 		if (workspace)
 		{

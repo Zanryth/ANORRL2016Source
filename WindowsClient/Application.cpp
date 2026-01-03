@@ -771,6 +771,9 @@ bool Application::Initialize(HWND hWnd, HINSTANCE hInstance)
 	if (startBootstrapperValidationThread)
 		validateBootstrapperVersionThread.reset(new boost::thread(boost::bind(&Application::validateBootstrapperVersion, this)));
 
+	RBX::DiscordHandler::Initialise("1456740539390230609");
+	RBX::DiscordHandler::SetDetails("", "Playing a game");
+
 	return true;
 }
 
@@ -1183,8 +1186,8 @@ void Application::handleError(const std::exception& e)
 
 void Application::waitForNewPlayerProcess(HWND hWnd)
 {
-	static const char kPreventMultipleRobloxPlayersEventName[] = "ROBLOX_singletonEvent";
-	static const char kPreventMultipleRobloxPlayersMutexName[] = "ROBLOX_singletonMutex";
+	static const char kPreventMultipleRobloxPlayersEventName[] = "ANORRL_singletonEvent";
+	static const char kPreventMultipleRobloxPlayersMutexName[] = "ANORRL_singletonMutex";
 
 	// Create (or open if already created) named event
 	HANDLE event = CreateEventA(NULL, FALSE, FALSE, kPreventMultipleRobloxPlayersEventName);
@@ -1334,7 +1337,7 @@ void Application::validateBootstrapperVersion()
 			std::string installHost;
 			std::string baseUrl = GetBaseURL();
 
-			pos = baseUrl.find("www");
+			pos = baseUrl.find("arl");
 			if (pos == std::string::npos)
 				return;
 

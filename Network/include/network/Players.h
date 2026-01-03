@@ -165,6 +165,8 @@ namespace Network {
 		static boost::mutex goldMemHashesMutex;
 
 		bool characterAutoSpawn;
+		bool emoteSoundsEnabled;
+		bool arbysChickenEnabled;
 
 		scoped_ptr<AbuseReporter> abuseReporter;
 		boost::intrusive_ptr<GuidItem<Instance>::Registry> guidRegistry;
@@ -232,6 +234,8 @@ namespace Network {
 
 		static Reflection::RefPropDescriptor<Players, Instance> propLocalPlayer;
 		static Reflection::PropDescriptor<Players, bool> propCharacterAutoSpawn;
+		static Reflection::PropDescriptor<Players, bool> propArbysChickenEnabled;
+		static Reflection::PropDescriptor<Players, bool> propEmoteSoundsEnabled;
 		static Reflection::RemoteEventDesc<Players, void(int)> event_requestCloudEditKick;
 		static Reflection::RemoteEventDesc<Players, void()> event_requestCloudEditShutdown;
 		Players();
@@ -315,6 +319,12 @@ namespace Network {
 		bool getCharacterAutoSpawnProperty() const { return characterAutoSpawn; }
 		void setCharacterAutoSpawnProperty(bool value);
 		bool getShouldAutoSpawnCharacter() const;
+
+		bool getEmoteSoundsEnabledProperty() const { return emoteSoundsEnabled; }
+		void setEmoteSoundsEnabledProperty(bool value);
+
+		bool getArbysChickenEnabledProperty() const { return arbysChickenEnabled; }
+		void setArbysChickenEnabledProperty(bool value);
 
 		void blockUser(int blockerUserId, int blockeeUserId, 
 			boost::function<void(std::string)> resumeFunction = boost::function<void(bool)>(), 

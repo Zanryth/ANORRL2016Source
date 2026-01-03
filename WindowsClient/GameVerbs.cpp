@@ -111,7 +111,7 @@ void ScreenshotVerb::screenshotFinished(const std::string &filename)
 void ScreenshotVerb::askUploadScreenshot(std::string filename)
 {
 	// Random parameter to force refresh
-	char n[16];
+	/*char n[16];
 	itoa(rand(), n, 10);
     std::string pictureDir = RBX::FileSystem::getUserDirectory(true, RBX::DirPicture).string();
 	std::string url = RBX::format("%s/UploadMedia/PostImage.aspx?seostr=%s&filename=%s&screenshotdir=%s&from=client&rand=", 
@@ -122,7 +122,7 @@ void ScreenshotVerb::askUploadScreenshot(std::string filename)
 	url += n;
 
 	WebBrowserAxDialog dlg(url, game->getDataModel());
-	dlg.DoModal();
+	dlg.DoModal();*/
 }
 
 void ScreenshotVerb::uploadScreenshot(const std::string& filename)
@@ -268,8 +268,8 @@ void RecordToggleVerb::abortCapture()
 
 void RecordToggleVerb::uploadVideo()
 {
-    std::string videoDir = RBX::FileSystem::getUserDirectory(true, RBX::DirVideo).string();
-	std::string url = RBX::format("%s/UploadMedia/UploadVideo.aspx?from=client&videodir=%s&rand=", 
+    /*std::string videoDir = RBX::FileSystem::getUserDirectory(true, RBX::DirVideo).string();
+	std::string url = RBX::format("%s/UploadMedia/UploadVideo.aspx?from=client&videodir=%s&rand=",
 		GetBaseURL().c_str(),
 		videoDir.c_str());
 
@@ -280,7 +280,7 @@ void RecordToggleVerb::uploadVideo()
 
 	WebBrowserAxDialog browser(url, game->getDataModel(), boost::bind(&RecordToggleVerb::EnableVideUpload, this, _1));
 	browser.SetFileName(fileName);
-	browser.DoModal(view->GetHWnd());
+	browser.DoModal(view->GetHWnd());*/
 }
 
 void RecordToggleVerb::doIt(IDataState* dataState)

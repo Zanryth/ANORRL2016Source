@@ -9,6 +9,7 @@
 
 #include "Util/HttpAsync.h"
 #include "Util/Analytics.h"
+#include "DiscordHandler.h"
 
 // forward declarations
 namespace po = boost::program_options;
