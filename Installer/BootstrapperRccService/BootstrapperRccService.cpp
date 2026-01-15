@@ -29,7 +29,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 BootstrapperRccService::BootstrapperRccService(HINSTANCE hInstance)
 :Bootstrapper(hInstance)
 {
-	_regSubPath = _T("RobloxReg");
+	_regSubPath = _T("ANORRLReg");
 	_regPath = _T("SOFTWARE\\") + _regSubPath;
 	_versionGuidName = _T(VERSIONGUIDNAMERCC);
 
@@ -115,7 +115,7 @@ void BootstrapperRccService::installService()
 		throw std::runtime_error("RCCService.exe -stop -uninstall timed out");
 	
 	// Write the installation dir to the registry
-	const TCHAR rbxRegPath[] = _T("Software\\ROBLOX Corporation\\Roblox");
+	const TCHAR rbxRegPath[] = _T("Software\\GraceRBLX\\ANORRL");
 	CRegKey pathKey;
 	pathKey.Create(HKEY_LOCAL_MACHINE, rbxRegPath);
 	if (pathKey.m_hKey == NULL)

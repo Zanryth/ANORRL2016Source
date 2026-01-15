@@ -13,10 +13,10 @@
 // TODO - rename to just "Roblox Studio"
 static const TCHAR* BootstrapperQTStudioFileName    = _T(STUDIOBOOTSTAPPERNAMEBETA);
 static const TCHAR* RobloxStudioAppFileName         = _T(STUDIOQTEXENAME);
-static const TCHAR* BootstrapperMutexName           = _T("www.roblox.com/bootstrapperQTStudio");
-static const TCHAR* StartRobloxStudioAppMutex       = _T("www.roblox.com/startRobloxQTStudioApp");
-static const TCHAR* FriendlyName                    = _T("ROBLOX Studio");
-static const TCHAR* StartEvent                      = _T("www.roblox.com/robloxQTStudioStartedEvent");
+static const TCHAR* BootstrapperMutexName           = _T("arl.lambda.cam/bootstrapperQTStudio");
+static const TCHAR* StartRobloxStudioAppMutex       = _T("arl.lambda.cam/startRobloxQTStudioApp");
+static const TCHAR* FriendlyName                    = _T("ANORRL Studio");
+static const TCHAR* StartEvent                      = _T("arl.lambda.cam/robloxQTStudioStartedEvent");
 
 static Bootstrapper* newBootstrapper(HINSTANCE hInstance)
 {
@@ -220,7 +220,7 @@ void BootstrapperQTStudio::DeployComponents(bool isUpdating, bool commitData)
 	createDirectory((programDirectory() + _T("imageformats")).c_str());
 
 	files.push_back(std::pair<std::wstring, std::wstring>(_T("redist.zip"), _T("")));
-	files.push_back(std::pair<std::wstring, std::wstring>(_T("RobloxStudio.zip"), _T("")));
+	files.push_back(std::pair<std::wstring, std::wstring>(_T("ANORRLStudio.zip"), _T("")));
 	files.push_back(std::pair<std::wstring, std::wstring>(_T("Libraries.zip"), _T("")));
 	files.push_back(std::pair<std::wstring, std::wstring>(_T("content-fonts.zip"), _T("content\\fonts\\")));
 	files.push_back(std::pair<std::wstring, std::wstring>(_T("content-music.zip"), _T("content\\music\\")));
@@ -252,7 +252,7 @@ void BootstrapperQTStudio::registerFileTypes()
     // register file types
 	{
         // Roblox.Place
-		CRegKey roblox_place = CreateKey(classesKey, _T("Roblox.Place"), _T("Roblox Place"));
+		CRegKey roblox_place = CreateKey(classesKey, _T("ANORRL.Place"), _T("ANORRL Place"));
 
 		CRegKey defaultIcon = CreateKey(
             roblox_place, 
@@ -280,7 +280,7 @@ void BootstrapperQTStudio::unregisterFileTypes()
 void BootstrapperQTStudio::unregisterFileTypes(HKEY ckey)
 {
 	DeleteKey(logger, classesKey, _T(".rbxl")); 
-	DeleteKey(logger, classesKey, _T("Roblox.Place")); 
+	DeleteKey(logger, classesKey, _T("ANORRL.Place")); 
 }
 
 void BootstrapperQTStudio::DoInstallApp()

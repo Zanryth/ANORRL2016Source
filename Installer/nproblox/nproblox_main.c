@@ -37,7 +37,7 @@ const String kRobloxTestSiteHost = "robloxlabs.com";
 //const String kRobloxHost = "LocalHost";
 
 const String kMIMEDescription  = "application/x-vnd-roblox-launcher:.launcher:info@roblox.com";
-const String kPluginDescriptionString = "<a href=\"http://www.roblox.com/\">RobloxLauncherPlugin</a> plugin.";
+const String kPluginDescriptionString = "<a href=\"http://arl.lambda.cam/\">RobloxLauncherPlugin</a> plugin.";
 const String kStartComOk = "CoInitialize Ok";
 const String kStartComFail = "CoInitialize fail";
 const String kStopComOk = "CoUninitialize Ok";

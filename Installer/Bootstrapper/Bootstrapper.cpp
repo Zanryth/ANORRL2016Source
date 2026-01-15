@@ -180,7 +180,7 @@ public:
 				else
 				{
 					CString message;
-					message.Format(_T("An error occured and Roblox cannot continue.\n\n%S"), e.what());
+					message.Format(_T("An error occured and ANORRL cannot continue.\n\n%S"), e.what());
 					::MessageBox(NULL, message, _T("Error"), MB_OK | MB_ICONEXCLAMATION);
 				}
 				result = -1;
@@ -859,13 +859,13 @@ void Bootstrapper::parseCmdLine()
 				std::wstring argName = argList[i].substr(0, separatorPos);
 				std::transform(argName.begin(), argName.end(), argName.begin(), tolower);
 				std::wstring argValue = argList[i].substr(separatorPos + 1, std::wstring::npos);
-				argMap.insert(std::make_pair<std::wstring, std::wstring>(argName, argValue));
+				argMap.insert(std::make_pair(argName, argValue));
 			}
 			else
 			{
 				std::wstring argName = argList[i];
 				std::transform(argName.begin(), argName.end(), argName.begin(), tolower);
-				argMap.insert(std::make_pair<std::wstring, std::wstring>(argName, _T("")));
+				argMap.insert(std::make_pair(argName, _T("")));
 			}
 		}
 
@@ -1062,7 +1062,7 @@ boost::shared_ptr<Bootstrapper> Bootstrapper::Create(HINSTANCE hInstance, Bootst
 			CTimedMutexLock l1(m1);
 			if (l1.Lock(1) == WAIT_TIMEOUT)
 			{
-				LLOG_ENTRY(result->logger, "No bg update, Roblox App is running");
+				LLOG_ENTRY(result->logger, "No bg update, ANORRL App is running");
 				return result;
 			}
 
@@ -1188,8 +1188,8 @@ void Bootstrapper::RegisterUninstall(const TCHAR *productName)
 
 	std::wstring uninstallString = format_string(_T("\"%s%s\" -uninstall%s"), programDirectory().c_str(), GetBootstrapperFileName().c_str(), perUser ? _T("") : _T(" -alluser"));
 	throwHRESULT (keyProductCode.SetStringValue(_T("UninstallString"), uninstallString.c_str(), REG_EXPAND_SZ), "Failed to set UninstallString key");
-	throwHRESULT (keyProductCode.SetStringValue(_T("Publisher"), _T("ROBLOX Corporation")), "Failed to set Publisher key");
-	throwHRESULT (keyProductCode.SetStringValue(_T("URLInfoAbout"), _T("http://www.roblox.com")), "Failed to set URLInfoAbout key");
+	throwHRESULT (keyProductCode.SetStringValue(_T("Publisher"), _T("GraceRBLX")), "Failed to set Publisher key");
+	throwHRESULT (keyProductCode.SetStringValue(_T("URLInfoAbout"), _T("http://arl.lambda.cam")), "Failed to set URLInfoAbout key");
 	throwHRESULT (keyProductCode.SetStringValue(_T("Comments"), convert_s2w(installVersion).c_str()), "Failed to set Comments key");
 	throwHRESULT (keyProductCode.SetStringValue(_T("InstallLocation"), programDirectory().c_str()), "Failed to set InstallLocation key");
 	throwHRESULT (keyProductCode.SetDWORDValue(_T("NoModify"), 1), "Failed to set NoModify key");
@@ -1235,7 +1235,7 @@ void Bootstrapper::RegisterProtocolHandler(const std::wstring& protocolScheme, c
 
 	// register the protocol handler scheme
 	CRegKey key = CreateKey(isPerUser() ? HKEY_CURRENT_USER : HKEY_LOCAL_MACHINE, (_T("SOFTWARE\\Classes\\") + protocolScheme).c_str());
-	throwHRESULT(key.SetStringValue(_T(""), _T("URL: Roblox Protocol")), format_string("failed to set value for protocol"));
+	throwHRESULT(key.SetStringValue(_T(""), _T("URL: ANORRL Protocol")), format_string("failed to set value for protocol"));
 	throwHRESULT(key.SetStringValue(_T("URL Protocol"), _T("")), format_string("failed to set value for protocol"));
 
 	CreateKey(key, _T("DefaultIcon"), exePath.c_str());
@@ -1660,7 +1660,7 @@ bool Bootstrapper::checkBootstrapperVersion()
 	moduleVersionNumber = vi.GetFileVersionAsString();
 	LOG_ENTRY1("module file version: %s", moduleVersionNumber.c_str());
 
-	message("Connecting to ROBLOX...");
+	message("Connecting to ANORRL...");
 	try
 	{
 		installVersion = fetchVersionGuid(); // TODO: Why is this setting the installVersion?
@@ -1742,7 +1742,7 @@ bool Bootstrapper::checkBootstrapperVersion()
 
 			try
 			{
-				message("Getting the latest Roblox...");
+				message("Getting the latest ANORRL...");
 
 				// We could use an "exe" extension, but hiding the type isn't a bad idea?
 				newBootstrapper = simple_logger<wchar_t>::get_temp_filename(_T("tmp"));
@@ -1759,7 +1759,7 @@ bool Bootstrapper::checkBootstrapperVersion()
 				{
 					std::ofstream bootstrapperFile(newBootstrapper.c_str(), std::ios::binary);
 					// this we might need during rollback, lets be on safe side
-					HttpTools::httpGetCdn(this, installHost, format_string("/%s-Roblox.exe", installVersion.c_str()), std::string(), bootstrapperFile, false, boost::bind(&Bootstrapper::dummyProgress, _1, _2));
+					HttpTools::httpGetCdn(this, installHost, format_string("/%s-ANORRL.exe", installVersion.c_str()), std::string(), bootstrapperFile, false, boost::bind(&Bootstrapper::dummyProgress, _1, _2));
 				}
 			}
 
@@ -1788,7 +1788,7 @@ bool Bootstrapper::checkBootstrapperVersion()
 
 void Bootstrapper::writeAppSettings()
 {
-	message("Configuring ROBLOX...");
+	message("Configuring ANORRL...");
 
 	std::wstring appSettings(programDirectory() + _T("AppSettings.xml"));
 	std::ofstream file(appSettings.c_str());
@@ -1932,7 +1932,7 @@ void Bootstrapper::checkOSPrerequisit()
 
 	LOG_ENTRY("checkOSPrerequisit failed");
 	if (windowed)
-		dialog->DisplayError("Roblox requires Microsoft Windows XP SP1 or greater", NULL);
+		dialog->DisplayError("ANORRL requires Microsoft Windows XP SP1 or greater", NULL);
 	throw installer_error_exception(installer_error_exception::OsPrerequisite);
 }
 
@@ -1942,7 +1942,7 @@ void Bootstrapper::checkCPUPrerequisit()
 	{
 		LOG_ENTRY("checkCPUPrerequisit failed");
 	    if (windowed)
-		    dialog->DisplayError("Roblox requires SSE2 support", NULL);
+		    dialog->DisplayError("ANORRL requires SSE2 support", NULL);
 		throw installer_error_exception(installer_error_exception::CpuPrerequisite);
 	}
 }
@@ -1955,7 +1955,7 @@ void Bootstrapper::checkDirectXPrerequisit()
 	{
 		log << "checkDirectXPrerequisit failed\n"; log.flush();
 		if (windowed)
-			dialog->DisplayError("Roblox requires DirectX 9.0 or greater", NULL);
+			dialog->DisplayError("ANORRL requires DirectX 9.0 or greater", NULL);
 		throw installer_error_exception(installer_error_exception::DirectxPrerequisite);
 	}
 #endif
@@ -1967,7 +1967,7 @@ void Bootstrapper::checkIEPrerequisit()
 	{
 		LOG_ENTRY("checkIEPrerequisit failed");
 		if (windowed)
-			dialog->DisplayError("Roblox requires Microsoft Internet Explorer 6.0 or greater", NULL);
+			dialog->DisplayError("ANORRL requires Microsoft Internet Explorer 6.0 or greater", NULL);
 		throw installer_error_exception(installer_error_exception::IePrerequisite);
 	}
 }
@@ -2137,7 +2137,7 @@ void Bootstrapper::checkDiskSpace()
 	::GetDiskFreeSpaceEx(programDirectory().c_str(), &freeBytesAvailableToCaller, NULL, NULL);
 	if (freeBytesAvailableToCaller.QuadPart < 40*1e6)
 	{
-		dialog->DisplayError("There is not enough room on your disk to install Roblox. Please free up some space and try again.", NULL);
+		dialog->DisplayError("There is not enough room on your disk to install ANORRL. Please free up some space and try again.", NULL);
 		throw installer_error_exception(installer_error_exception::DiskSpacePrerequisite);
 	}
 }
@@ -2202,10 +2202,10 @@ void Bootstrapper::run()
 			LOG_ENTRY("Error: IsNetworkAlive failed");
 			if (windowed && isLatestProcess())
 			{
-				CString message = _T("Roblox cannot connect to the Internet\n\nDoes your computer have a working network connection?  Is antivirus software preventing Roblox from accessing the Internet?");
+				CString message = _T("ANORRL cannot connect to the Internet\n\nDoes your computer have a working network connection?  Is antivirus software preventing ANORRL from accessing the Internet?");
 				if (!robloxAppArgs.empty())
 				{
-					message += _T("\n\nIf you continue Roblox may not work properly.");
+					message += _T("\n\nIf you continue ANORRL may not work properly.");
 					// TODO: CTaskDialog should use nice command buttons
 					if (dialog->MessageBox(message, _T("Error"), MB_OKCANCEL | MB_ICONEXCLAMATION)==IDOK)
 					{
@@ -2238,10 +2238,10 @@ void Bootstrapper::run()
 
 			if (windowed && isLatestProcess())
 			{
-				CString message = _T("Cannot connect to the Roblox website.\n\nIs antivirus software preventing Roblox from accessing the Internet?");
+				CString message = _T("Cannot connect to the ANORRL website.\n\nIs antivirus software preventing ANORRL from accessing the Internet?");
 				if (!robloxAppArgs.empty())
 				{
-					message += _T("\n\nIf you continue Roblox may not work properly.");
+					message += _T("\n\nIf you continue ANORRL may not work properly.");
 					if (dialog->MessageBox(message, _T("Error"), MB_OKCANCEL | MB_ICONEXCLAMATION)==IDOK)
 					{
 						installVersion = queryInstalledVersion();
@@ -2262,7 +2262,7 @@ void Bootstrapper::run()
 			if(queryInstalledVersion() != installVersion) 
 				throw non_zero_exit_exception();
 
-			LOG_ENTRY("Roblox is up to date, returning success");
+			LOG_ENTRY("ANORRL is up to date, returning success");
 			goto done;
 		}
 
@@ -3146,7 +3146,7 @@ void Bootstrapper::setLatestProcess()
 {
 	int pid = _getpid();
 
-	const std::string latestProcessName = format_string("www.roblox.com/%s/%s/latestProcess", installHost.c_str(), Type().c_str());
+	const std::string latestProcessName = format_string("arl.lambda.cam/%s/%s/latestProcess", installHost.c_str(), Type().c_str());
 
 	latestProcess.Attach(CreateFileMapping(
 			 INVALID_HANDLE_VALUE,    // use paging file

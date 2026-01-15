@@ -98,8 +98,9 @@ local function Initialize()
 
 			-- create new friend status label
 			local status = nil
-			if player and player ~= localPlayer and player.userId > 1 and localPlayer.userId > 1 then
+			if player and player ~= localPlayer and player.userId >= 1 and localPlayer.userId >= 1 then
 				status = getFriendStatus(player)
+				print(status)
 			end
 
 			local friendLabel = nil
@@ -269,12 +270,12 @@ local function Initialize()
 					frame.MouseLeave:connect(function()
 						frame.ImageTransparency = frameDefaultTransparency
 					end)
-
+					
 					frame.Parent = this.Page
 					table.insert(existingPlayerLabels, index, frame)
 				end
 				frame.Name = 'PlayerLabel'..player.Name
-				frame.Icon.Image = 'http://arl.lambda.cam/Thumbs/Avatar.ashx?x=100&y=100&userId='..math.max(1, player.userId)
+				frame.Icon.Image = 'http://arl.lambda.cam/Thumbs/Avatar.ashx?x=100&y=100&userId='..math.max(1, player.userId)..'&t='..tostring(math.random())
 				frame.NameLabel.Text = player.Name
 				frame.ImageTransparency = frameDefaultTransparency
 

@@ -75,11 +75,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "ROBLOX Corporation"
-            VALUE "FileDescription", "Roblox"
+            VALUE "CompanyName", "GraceRBLX"
+            VALUE "FileDescription", "ANORRL"
             VALUE "FileVersion", "1, 2, 8, 25"
             VALUE "InternalName", "RobloxProxy.dll"
-            VALUE "LegalCopyright", "(c) 2012 ROBLOX Corporation.  All rights reserved."
+            VALUE "LegalCopyright", "(c) 2025 GraceRBLX.  All rights reserved."
             VALUE "OriginalFilename", "RobloxProxy.dll"
             VALUE "ProductName", "RobloxProxy.dll"
             VALUE "ProductVersion", "1, 2, 8, 25"

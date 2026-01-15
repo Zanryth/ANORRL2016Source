@@ -139,6 +139,7 @@ local ADMINS = {	-- Admins with special icons
     ['13268404'] = 'http://www.roblox.com/asset/?id=113059239', -- Sorcus
     ['261'] = 'http://www.roblox.com/asset/?id=105897927', -- shedlestky
     ['20396599'] = 'http://www.roblox.com/asset/?id=161078086', -- Robloxsai
+	['1'] = 'http://arl.lambda.cam/asset/?id=899'
 }
 
 local ABUSES = {
@@ -775,7 +776,8 @@ end
 playerDropDown.HiddenSignal:connect(popupHidden)
 
 local function onEntryFrameSelected(selectedFrame, selectedPlayer)
-	if selectedPlayer ~= Player and selectedPlayer.userId > 1 and Player.userId > 1 then
+	--print(selectedPlayer, Player)
+	if selectedPlayer ~= Player and selectedPlayer.userId >= 1 and Player.userId >= 1 then
 		if LastSelectedFrame ~= selectedFrame then
 			if LastSelectedFrame then
 				for _,childFrame in pairs(LastSelectedFrame:GetChildren()) do

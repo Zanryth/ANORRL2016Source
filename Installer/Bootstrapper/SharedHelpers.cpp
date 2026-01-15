@@ -193,7 +193,7 @@ void deleteCurVersionKeys(simple_logger<wchar_t> &logger, bool isPerUser, const 
 {
 	CRegKey key;
 	LOG_ENTRY("deleteCurVersionKeys");
-	if(!FAILED(key.Open(isPerUser ? HKEY_CURRENT_USER : HKEY_LOCAL_MACHINE, _T("Software\\ROBLOX Corporation\\Roblox"), KEY_WRITE)))
+	if(!FAILED(key.Open(isPerUser ? HKEY_CURRENT_USER : HKEY_LOCAL_MACHINE, _T("Software\\GraceRBLX\\ANORRL"), KEY_WRITE)))
 	{
 		LOG_ENTRY("deleteCurVersionKeys - key Opened");
 		key.DeleteValue(buildVersionKey(component).c_str());
@@ -205,7 +205,7 @@ void setCurrentVersion(simple_logger<wchar_t> &logger, bool isPerUser, const TCH
 {
 	CRegKey key;
 	LOG_ENTRY3("setCurrentVersion - opening write registry key component=%S, version=%S, url=%S", componentCode, version, baseUrl);
-	if (ERROR_SUCCESS == key.Create(isPerUser ? HKEY_CURRENT_USER : HKEY_LOCAL_MACHINE, _T("Software\\ROBLOX Corporation\\Roblox")))
+	if (ERROR_SUCCESS == key.Create(isPerUser ? HKEY_CURRENT_USER : HKEY_LOCAL_MACHINE, _T("Software\\GraceRBLX\\ANORRL")))
 	{
 		std::wstring vKey = buildVersionKey(componentCode);
 		std::wstring uKey = buildUrlKey(componentCode);
@@ -226,7 +226,7 @@ void getCurrentVersion(simple_logger<wchar_t> &logger, bool isPerUser, const TCH
 	LOG_ENTRY1("getCurrentVersion - opening read registry key component=%S", componentCode);
 	version[0] = 0;
 	baseUrl[0] = 0;
-	if (ERROR_SUCCESS == key.Open(isPerUser ? HKEY_CURRENT_USER : HKEY_LOCAL_MACHINE, _T("Software\\ROBLOX Corporation\\Roblox"), KEY_READ))
+	if (ERROR_SUCCESS == key.Open(isPerUser ? HKEY_CURRENT_USER : HKEY_LOCAL_MACHINE, _T("Software\\GraceRBLX\\ANORRL"), KEY_READ))
 	{
 		std::wstring vKey = buildVersionKey(componentCode);
 		std::wstring uKey = buildUrlKey(componentCode);
@@ -276,7 +276,7 @@ std::wstring getQTStudioCode()
 void appendEnvironmentToProtocolScheme(std::wstring& scheme, const std::string baseUrl)
 {
 	std::vector<std::string> baseHostUrlParts = splitOn(baseUrl, '.');
-	if (baseHostUrlParts[1] != "roblox")
+	if (baseHostUrlParts[1] != "lambda")
 	{
 		scheme += convert_s2w("-" + baseHostUrlParts[1]);
 	}
@@ -284,7 +284,7 @@ void appendEnvironmentToProtocolScheme(std::wstring& scheme, const std::string b
 
 std::wstring getPlayerProtocolScheme(const std::string& baseUrl)
 {
-	std::wstring scheme = _T("roblox-player");
+	std::wstring scheme = _T("anorrl-player");
 
 	appendEnvironmentToProtocolScheme(scheme, baseUrl);
 
@@ -293,7 +293,7 @@ std::wstring getPlayerProtocolScheme(const std::string& baseUrl)
 
 std::wstring getQTStudioProtocolScheme(const std::string& baseUrl)
 {
-	std::wstring scheme = _T("roblox-studio");
+	std::wstring scheme = _T("anorrl-studio");
 
 	appendEnvironmentToProtocolScheme(scheme, baseUrl);
 
@@ -302,7 +302,7 @@ std::wstring getQTStudioProtocolScheme(const std::string& baseUrl)
 
 std::wstring getStudioRegistrySubPath()
 {
-	return _T("StudioRobloxReg");
+	return _T("StudioANORRLReg");
 }
 
 std::wstring getStudioRegistryPath()
@@ -312,7 +312,7 @@ std::wstring getStudioRegistryPath()
 
 std::wstring getQTStudioRegistrySubPath()
 {
-	return _T("StudioQTRobloxReg");
+	return _T("StudioQTANORRLReg");
 }
 
 std::wstring getQTStudioRegistryPath()
@@ -441,7 +441,7 @@ void updateExistingRobloxShortcuts(
 				bool isMFCStudio = (StrCmp(exeName, _T(STUDIOBOOTSTAPPERNAME)) == 0); // true if we're updating for MFC studio
 				LOG_ENTRY1("updateExistingRobloxShortcuts isStudio = %d", isMFCStudio);
 
-				if (StrStr(foundFilePath, _T("Roblox.exe")))
+				if (StrStr(foundFilePath, _T("ANORRL.exe")))
 				{
 					// this shortcut points to the player
 					TCHAR args[MAX_PATH];

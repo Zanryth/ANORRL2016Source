@@ -11,7 +11,7 @@
 #include <vector>
 #pragma comment (lib , "Wininet.lib")
 
-#define ROBLOXREGKEY "RobloxReg"	// Can't use "Roblox" because it is used by the old legacy installer
+#define ROBLOXREGKEY "ANORRLReg"	// Can't use "Roblox" because it is used by the old legacy installer
 
 const int MaxRetrys = 10;
 
@@ -129,9 +129,9 @@ void CheckResult(HRESULT hr)
 // CLauncher
 const CLauncher::SiteList CLauncher::rgslTrustedSites[] =
 {
-	{ SiteList::Allow, L"http", L"roblox.com"},
+	{ SiteList::Allow, L"http", L"lambda.com"},
 	{ SiteList::Allow, L"http", L"robloxlabs.com" },
-	{ SiteList::Allow, L"https", L"roblox.com"},
+	{ SiteList::Allow, L"https", L"lambda.com"},
 	{ SiteList::Allow, L"https", L"robloxlabs.com" }
 	//{ SiteList::Allow, L"http", SITELOCK_INTRANET_ZONE }
 };

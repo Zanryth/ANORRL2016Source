@@ -322,6 +322,8 @@ function createPlayerDropDown()
 				LocalPlayer:RevokeFriendship(playerDropDown.Player)
 			elseif status == Enum.FriendStatus.FriendRequestReceived then
 				LocalPlayer:RequestFriendship(playerDropDown.Player)
+			else
+				print("something went wrong and i cant friend that person")
 			end
 
 			playerDropDown:Hide()
@@ -526,6 +528,7 @@ function createPlayerDropDown()
 		end
 
 		local blocked = isBlocked(playerDropDown.Player.userId)
+		print("blocked: ", blocked)
 
 		if not blocked then
 			table.insert(buttons, {
@@ -546,13 +549,14 @@ function createPlayerDropDown()
 		if IsServerFollowers or IsFollowersEnabled then
 			local following = isFollowing(playerDropDown.Player.userId, LocalPlayer.userId)
 			local followerText = following and "Unfollow Player" or "Follow Player"
+			print("following:",following)
 			
 			if not blocked then
 				table.insert(buttons, {
 					Name = "FollowerButton",
 					Text = followerText,
 					OnPress = following and onUnfollowButtonPressed or onFollowButtonPressed,
-					})
+				})
 			end
 		end
 

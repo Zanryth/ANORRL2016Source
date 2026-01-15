@@ -9,8 +9,8 @@
     #include "ProcessInformation.h"
 #endif
 
-#define ROBLOXREGKEY        "RobloxReg"	        // Can't use "Roblox" because it is used by the old legacy installer
-#define STUDIOQTROBLOXREG   "StudioQTRobloxReg" // Technical debt we need to make this two names globally unique and shared
+#define ROBLOXREGKEY        "ANORRLReg"	        // Can't use "Roblox" because it is used by the old legacy installer
+#define STUDIOQTROBLOXREG   "StudioQTANORRLReg" // Technical debt we need to make this two names globally unique and shared
 
 //Pull in the win32 version Library
 #pragma comment(lib, "version.lib")
@@ -172,7 +172,7 @@ CRegKey GetKey(CString& out_operation, bool isStudioKey, bool is64bits)
 	{
 	ATL::CPath path;
 	CRegKey key = GetKey(out_operation, isStudio);
-	out_operation = "Query Roblox default key";
+	out_operation = "Query ANORRL default key";
 	DWORD length = _MAX_PATH+1;
 	CheckResult(key.QueryStringValue(NULL,path.m_strPath.GetBuffer(length),&length));
 	path.m_strPath.ReleaseBuffer();
@@ -222,7 +222,7 @@ CRegKey GetKey(CString& out_operation, bool isStudioKey, bool is64bits)
 				launchMode = Play;
 			}
 
-			operation = "Start Roblox.exe";
+			operation = "Start ANORRL.exe";
 
 			TCHAR cmd[2048] = {0};
 
@@ -320,7 +320,7 @@ CRegKey GetKey(CString& out_operation, bool isStudioKey, bool is64bits)
 	try
 	{
 		ATL::CPath path = loadRobloxPath(operation, false);
-		operation = "Start Roblox.exe";
+		operation = "Start ANORRL.exe";
 
 		TCHAR cmd[2048];
 #ifdef UNICODE
@@ -414,12 +414,12 @@ CRegKey GetKey(CString& out_operation, bool isStudioKey, bool is64bits)
 	HRESULT hr = S_OK;
 	try
 	{
-		operation = "Update Roblox.exe";
+		operation = "Update ANORRL.exe";
 
 		ATL::CPath path;
 		{
 			CRegKey key = GetKey(operation, false);
-			operation = "Query Roblox default key";
+			operation = "Query ANORRL default key";
 			DWORD length = _MAX_PATH+1;
 			CheckResult(key.QueryStringValue(NULL, path.m_strPath.GetBuffer(length), &length));
 			path.m_strPath.ReleaseBuffer();
@@ -459,12 +459,12 @@ CRegKey GetKey(CString& out_operation, bool isStudioKey, bool is64bits)
 	(*pVal) = VARIANT_FALSE;
 	try
 	{
-		operation = "IsUpToDate Roblox.exe";
+		operation = "IsUpToDate ANORRL.exe";
 
 		ATL::CPath path;
 		{
 			CRegKey key = GetKey(operation, false);
-			operation = "Query Roblox default key";
+			operation = "Query ANORRL default key";
 			DWORD length = _MAX_PATH+1;
 			CheckResult(key.QueryStringValue(NULL, path.m_strPath.GetBuffer(length), &length));
 			path.m_strPath.ReleaseBuffer();

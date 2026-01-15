@@ -6,7 +6,7 @@
 
 const TCHAR rbxRegPath[] = _T("Software\\GraceRBLX\\ANORRL");
 const TCHAR rbxRegName[] = _T("CPath");
-const TCHAR CookieFileMutext[] = _T("RobloxCookieEngineMutex");
+const TCHAR CookieFileMutext[] = _T("ANORRLCookieEngineMutex");
 
 namespace
 {

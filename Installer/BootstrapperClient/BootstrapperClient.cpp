@@ -24,13 +24,13 @@
 #include "ClientProgressDialog.h"
 #include "RobloxServicesTools.h"
 
-static const TCHAR* BootstrapperFileName    = _T("RobloxPlayerLauncher.exe");
+static const TCHAR* BootstrapperFileName    = _T("ANORRLPlayerLauncher.exe");
 static const TCHAR* RobloxAppFileName		= _T(PLAYEREXENAME);
-static const TCHAR* BootstrapperMutexName   = _T("www.roblox.com/bootstrapper");
-static const TCHAR* StartRobloxAppMutex     = _T("www.roblox.com/startRobloxApp");
+static const TCHAR* BootstrapperMutexName   = _T("arl.lambda.cam/bootstrapper");
+static const TCHAR* StartRobloxAppMutex     = _T("arl.lambda.cam/startRobloxApp");
 static const TCHAR* LauncherFileName        = _T("RobloxProxy.dll");
 static const TCHAR* LauncherFileName64      = _T("RobloxProxy64.dll");
-static const TCHAR* FriendlyName            = _T("ROBLOX");
+static const TCHAR* FriendlyName            = _T("ANORRL");
 static const TCHAR* CLSID_Launcher          = _T("{76D50904-6780-4c8b-8986-1A7EE0B1716D}");
 static const TCHAR* CLSID_Launcher64        = _T("{DEE03C2B-0C0C-41A9-9877-FD4B4D7B6EA3}");
 static const TCHAR* AppID_Launcher          = _T("{664B192B-D17A-4921-ABF9-C6F6264E5110}");
@@ -68,9 +68,9 @@ BootstrapperClient::BootstrapperClient(HINSTANCE hInstance)
 
 	//Plugin depends on RobloxReg value as well, 
 	//so if you ever change this guy make sure that plugins code is updates as well
-	_regSubPath = _T("RobloxReg");
+	_regSubPath = _T("ANORRL");
 	_regPath = _T("SOFTWARE\\") + _regSubPath;
-	_versionFileName = _T("RobloxVersion.txt");
+	_versionFileName = _T("ANORRLVersion.txt");
 	_versionGuidName = _T(VERSIONGUIDNAMEPLAYER);
 
 	SYSTEMTIME sysTime = {0};
@@ -487,7 +487,7 @@ bool BootstrapperClient::NeedPreDeployRun()
 	}
 
 	CRegKey key;
-	if (SUCCEEDED(key.Open(HKEY_CURRENT_USER, _T("Software\\ROBLOX Corporation\\Roblox"), KEY_READ)))
+	if (SUCCEEDED(key.Open(HKEY_CURRENT_USER, _T("Software\\GraceRBLX\\ANORRL"), KEY_READ)))
 	{
 		TCHAR buf[MAX_PATH];
 		ULONG bufSize = MAX_PATH;
@@ -539,7 +539,7 @@ void BootstrapperClient::RunPreDeploy()
 		DeployComponents(true, false);
 
 		CRegKey key;
-		if (SUCCEEDED(key.Create(HKEY_CURRENT_USER, _T("Software\\ROBLOX Corporation\\Roblox"))))
+		if (SUCCEEDED(key.Create(HKEY_CURRENT_USER, _T("Software\\GraceRBLX\\ANORRL"))))
 		{
 			key.SetStringValue(_T("LastPreVersion"), convert_s2w(preVersion).c_str());
 			LOG_ENTRY("Setting last pre deploy version entry");
@@ -699,10 +699,10 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 
 	setStage(10);
 
-	message("Starting ROBLOX...");
+	message("Starting ANORRL...");
 
 	LOG_ENTRY("Creating event");
-	CEvent robloxStartedEvent(NULL, TRUE, FALSE, _T("www.roblox.com/robloxStartedEvent"));
+	CEvent robloxStartedEvent(NULL, TRUE, FALSE, _T("arl.lambda.cam/robloxStartedEvent"));
 	LOG_ENTRY("Resetting event");
 	robloxStartedEvent.Reset();
 
@@ -714,7 +714,6 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 	}
 
 	::AllowSetForegroundWindow(ASFW_ANY);
-
 	CProcessInformation pi;
 
 	if (!playArgs)
@@ -726,7 +725,7 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 			if (fromInstall)
 				url = format_string(_T("%S%s"), BaseHost().c_str(), _T("/download/thankyou"));
 			else
-				url = format_string(_T("%S%s"), BaseHost().c_str(), _T("/Games.aspx"));
+				url = format_string(_T("%S%s"), BaseHost().c_str(), _T("/games"));
 
 
 			bool launcherStarted = false;
@@ -1005,7 +1004,7 @@ void BootstrapperClient::deployRobloxProxy(bool commitData)
 
 		// For IE8:
 		CRegKey allowedDomainsKey = CreateKey(key, _T("AllowedDomains"));
-		CreateKey(allowedDomainsKey, _T("roblox.com"));
+		CreateKey(allowedDomainsKey, _T("lambda.cam"));
 		CreateKey(allowedDomainsKey, _T("robloxlabs.com"));
 	}
 
@@ -1043,8 +1042,8 @@ void BootstrapperClient::registerFirefoxPlugin(const TCHAR* id, bool is64Bits)
 	CRegKey key = CreateKey(parent, format_string(_T("SOFTWARE\\MozillaPlugins\\%s"), id).c_str(), NULL, is64Bits);
 
 	key.SetStringValue(_T("ProductName"), _T("Launcher"));
-	key.SetStringValue(_T("Description"), _T("Roblox Launcher"));
-	key.SetStringValue(_T("Vendor"), _T("Roblox"));
+	key.SetStringValue(_T("Description"), _T("ANORRL Launcher"));
+	key.SetStringValue(_T("Vendor"), _T("ANORRL"));
 	key.SetStringValue(_T("Version"), _T("1"));
 
 	if (is64Bits)
@@ -1085,7 +1084,7 @@ void BootstrapperClient::DeployComponents(bool isUpdating, bool commitData)
 	createDirectory((programDirectory() + _T("shaders")).c_str());
 
 	files.push_back(std::pair<std::wstring, std::wstring>(_T("redist.zip"), _T("")));
-	files.push_back(std::pair<std::wstring, std::wstring>(_T("RobloxApp.zip"), _T("")));
+	files.push_back(std::pair<std::wstring, std::wstring>(_T("ANORRLApp.zip"), _T("")));
 	files.push_back(std::pair<std::wstring, std::wstring>(_T("Libraries.zip"), _T("")));
 	files.push_back(std::pair<std::wstring, std::wstring>(_T("content-fonts.zip"), _T("content\\fonts\\")));
 	files.push_back(std::pair<std::wstring, std::wstring>(_T("content-music.zip"), _T("content\\music\\")));

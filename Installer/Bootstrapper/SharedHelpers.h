@@ -67,11 +67,11 @@ private:
 #define LLOG_ENTRY3(logger, msg, a1, a2, a3) logger.write_logentry(msg, reinterpret_cast<const void*>(a1), reinterpret_cast<const void*>(a2), reinterpret_cast<const void*>(a3))
 #define LLOG_ENTRY4(logger, msg, a1, a2, a3, a4) logger.write_logentry(msg, reinterpret_cast<const void*>(a1), reinterpret_cast<const void*>(a2), reinterpret_cast<const void*>(a3), reinterpret_cast<const void*>(a4))
 
-#define FIREFOXREGKEY               "@nsroblox.roblox.com/launcher"
-#define FIREFOXREGKEY64             "@nsroblox.roblox.com/launcher64"
+#define FIREFOXREGKEY               "@nslambda.lambda.cam/launcher"
+#define FIREFOXREGKEY64             "@nslambda.lambda.cam/launcher64"
 
-#define PLAYERLINKNAME_CUR          "ROBLOX Player"
-#define PLAYERLINKNAMELEGACY        "Play Roblox"
+#define PLAYERLINKNAME_CUR          "ANORRL Player"
+#define PLAYERLINKNAMELEGACY        "Open ANORRL Games"
 
 // MFC Studio names
 #define STUDIOEXENAME               "RobloxStudio.exe"
@@ -79,8 +79,8 @@ private:
 #define STUDIOLINKNAMELEGACY        "Roblox Studio"    // wrong case
 
 // QT Studio names
-#define STUDIOQTEXENAME             "RobloxStudioBeta.exe"
-#define STUDIOBOOTSTAPPERNAMEBETA   "RobloxStudioLauncherBeta.exe"
+#define STUDIOQTEXENAME             "ANORRLStudioBeta.exe"
+#define STUDIOBOOTSTAPPERNAMEBETA   "ANORRLStudioLauncherBeta.exe"
 #define STUDIOQTLINKNAME_CUR        "ROBLOX Studio"
 #define STUDIOQTLINKNAME            "ROBLOX Studio Beta"
 #define STUDIOQTLINKNAME20          "ROBLOX Studio 2.0"
@@ -88,7 +88,7 @@ private:
 #define STUDIOQTLINKNAME2013        "ROBLOX Studio 2013"
 
 // Player names
-#define  PLAYEREXENAME				"RobloxPlayerBeta.exe"
+#define  PLAYEREXENAME				"ANORRLPlayerBeta.exe"
 
 // Version URL string names (setup.roblox.com/XXX) - replace XXX with these values to get the most recent version
 // Unfortunately these have to be defined globally so Player knows how to find the latest version of Studio to download

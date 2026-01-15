@@ -90,6 +90,7 @@
     <OutDir>bin\$(Configuration)\</OutDir>
     <IntDir>obj\$(Configuration)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>$(CONTRIB_PATH)\boost_1_56_0\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(Platform)\$(Configuration)\</OutDir>
@@ -163,7 +164,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
       <AdditionalIncludeDirectories>..\Bootstrapper;$(CONTRIB_PATH)\boost_1_56_0\include;$(CONTRIB_PATH)\boost_1_56_0\src;..\..\Win;..\..\ClientShared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;BOOST_THREAD_BUILD_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -172,7 +173,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(CONTRIB_PATH)\SDK\Lib\Iphlpapi.lib;$(CONTRIB_PATH)\SDK\Lib\taskschd.lib;$(CONTRIB_PATH)\SDK\Lib\mstask.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)RobloxPlayerLauncher.exe</OutputFile>
+      <OutputFile>$(OutDir)ANORRLPlayerLauncher.exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -274,8 +275,6 @@
     <Image Include="..\Bootstrapper\assets\txt_backto-ON%401x .bmp" />
     <Image Include="..\Bootstrapper\assets\txt_success%401x.bmp" />
     <Image Include="..\Bootstrapper\assets\txt_success-player%401x.bmp" />
-    <Image Include="..\Bootstrapper\Bootstrapper.ico" />
-    <Image Include="assets\logo_robloxstudio%401x.bmp" />
     <Image Include="Bootstrapper.ico" />
   </ItemGroup>
   <ItemGroup>

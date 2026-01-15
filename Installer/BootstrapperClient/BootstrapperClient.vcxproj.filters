@@ -76,9 +76,6 @@
     <Image Include="Bootstrapper.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="..\Bootstrapper\Bootstrapper.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="..\Bootstrapper\assets\btn_cancel-ON.bmp">
       <Filter>Resource Files</Filter>
     </Image>
@@ -101,9 +98,6 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="..\Bootstrapper\assets\logo_robloxstudio%401x.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\logo_robloxstudio%401x.bmp">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="..\Bootstrapper\assets\txt_backto-ON%401x .bmp">
