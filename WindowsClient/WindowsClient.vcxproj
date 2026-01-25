@@ -65,7 +65,7 @@
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(BUILD_PATH)\Player\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>obj\$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
     <TargetName>ANORRLPlayerBetaRaw</TargetName>
@@ -146,24 +146,24 @@
     </Link>
     <PostBuildEvent>
       <Command>
-copy /Y ..\WindowsClient\$(Platform)\$(Configuration)\ANORRLPlayerBetaRaw.pdb ..\WindowsClient\$(Platform)\$(Configuration)\ANORRLPlayerBeta.pdb
-copy /Y $(CONTRIB_PATH)\VMProtectWin_2.13\VMProtect_Con.exe ..\WindowsClient\$(Platform)\$(Configuration)\VMProtect_Con.exe
-copy /Y $(CONTRIB_PATH)\VMProtectWin_2.13\ANORRLPlayer.exe.vmp ..\WindowsClient\$(Platform)\$(Configuration)\ANORRLPlayer.exe.vmp
-copy /Y $(CONTRIB_PATH)\VMProtectWin_2.13\VMProtect.key ..\WindowsClient\$(Platform)\$(Configuration)\VMProtect.key
-..\WindowsClient\$(Platform)\$(Configuration)\VMProtect_Con.exe  ..\WindowsClient\$(Platform)\$(Configuration)\ANORRLPlayerBetaRaw.exe -pf ..\WindowsClient\$(Platform)\$(Configuration)\ANORRLPlayer.exe.vmp
-..\WindowsClient\$(Platform)\$(Configuration)\ANORRLPlayerBeta.exe -w 195936478
-copy /Y  ..\WindowsClient\$(Platform)\$(Configuration)\ANORRLPlayerBeta.tmp  ..\WindowsClient\$(Platform)\$(Configuration)\ANORRLPlayerBeta.exe
+copy /Y $(BUILD_PATH)\Player\$(Platform)\$(Configuration)\ANORRLPlayerBetaRaw.pdb $(BUILD_PATH)\Player\$(Platform)\$(Configuration)\ANORRLPlayerBeta.pdb
+copy /Y $(CONTRIB_PATH)\VMProtectWin_2.13\VMProtect_Con.exe $(BUILD_PATH)\Player\$(Platform)\$(Configuration)\VMProtect_Con.exe
+copy /Y $(CONTRIB_PATH)\VMProtectWin_2.13\ANORRLPlayer.exe.vmp $(BUILD_PATH)\Player\$(Platform)\$(Configuration)\ANORRLPlayer.exe.vmp
+copy /Y $(CONTRIB_PATH)\VMProtectWin_2.13\VMProtect.key $(BUILD_PATH)\Player\$(Platform)\$(Configuration)\VMProtect.key
+$(BUILD_PATH)\Player\$(Platform)\$(Configuration)\VMProtect_Con.exe  $(BUILD_PATH)\Player\$(Platform)\$(Configuration)\ANORRLPlayerBetaRaw.exe -pf $(BUILD_PATH)\Player\$(Platform)\$(Configuration)\ANORRLPlayer.exe.vmp
+$(BUILD_PATH)\Player\$(Platform)\$(Configuration)\ANORRLPlayerBeta.exe -w 195936478
+copy /Y  $(BUILD_PATH)\Player\$(Platform)\$(Configuration)\ANORRLPlayerBeta.tmp  ..\WindowsClient\$(Platform)\$(Configuration)\ANORRLPlayerBeta.exe
 
-if not exist ..\WindowsClient\$(Platform)\$(Configuration)\Log.dll (
-echo placeholder &gt; ..\WindowsClient\$(Platform)\$(Configuration)\Log.dll
+if not exist $(BUILD_PATH)\Player\$(Platform)\$(Configuration)\Log.dll (
+echo placeholder &gt; $(BUILD_PATH)\Player\$(Platform)\$(Configuration)\Log.dll
 )
 
-if not exist ..\WindowsClient\$(Platform)\$(Configuration)\boost.dll (
-echo placeholder &gt; ..\WindowsClient\$(Platform)\$(Configuration)\boost.dll
+if not exist $(BUILD_PATH)\Player\$(Platform)\$(Configuration)\boost.dll (
+echo placeholder &gt; $(BUILD_PATH)\Player\$(Platform)\$(Configuration)\boost.dll
 )
 
-if not exist ..\WindowsClient\$(Platform)\$(Configuration)\boost.pdb (
-echo placeholder &gt; ..\WindowsClient\$(Platform)\$(Configuration)\boost.pdb
+if not exist $(BUILD_PATH)\Player\$(Platform)\$(Configuration)\boost.pdb (
+echo placeholder &gt;$(BUILD_PATH)\Player\$(Platform)\$(Configuration)\boost.pdb
 )
 
 "$(SolutionDir)buildshaders.bat"

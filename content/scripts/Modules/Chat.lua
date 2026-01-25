@@ -2327,7 +2327,7 @@ local function CreateChat()
 			this.ChatWindowWidget:AddSystemChatMessage("/unmute [PlayerName] - Restore in-game communications with Target Player")
 			
 			this.ChatWindowWidget:AddSystemChatMessage("Emotes:")
-			this.ChatWindowWidget:AddSystemChatMessage("wave, point, cheer, laugh, caramelldansen, dwyec, otsukare, unlockit, californiagurls, hakari, torturedancion, mannrobics, minecraft")
+			this.ChatWindowWidget:AddSystemChatMessage("wave, point, cheer, laugh, caramelldansen, dwyec, otsukare, unlockit, californiagurls, hakari, torturedancion, mannrobics, minecraft, gangnam, gmod, retro")
 		end
 	end
 

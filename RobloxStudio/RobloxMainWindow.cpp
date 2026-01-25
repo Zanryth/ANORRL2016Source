@@ -233,7 +233,7 @@ RobloxMainWindow::RobloxMainWindow(const QMap<QString, QString> argMap)
 
 			srand(time(NULL)); // call just once or explode or something
 
-			int randSplashNumber = rand()%19;
+			int randSplashNumber = rand()%20;
 			if (randSplashNumber <= 0) {
 				randSplashNumber = 1;
 			}

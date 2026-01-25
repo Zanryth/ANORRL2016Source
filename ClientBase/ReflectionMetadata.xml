@@ -2511,9 +2511,23 @@
       <Item class="ReflectionMetadataProperties">
         <Item class="ReflectionMetadataMember">
           <Properties>
+            <string name="Name">ArbysChibkenEnabled</string>
+            <bool name="Browsable">true</bool>
+            <string name="summary">This decides whether or not destructive chat features can be allowed with in a game. If set to false, these features will not be enabled and the game will continue as normal.</string>
+          </Properties>
+        </Item>
+        <Item class="ReflectionMetadataMember">
+          <Properties>
             <string name="Name">CharacterAutoLoads</string>
             <bool name="Browsable">true</bool>
             <string name="summary">Set to true, when a player joins a game, they get a character automatically, as well as when they die.  When set to false, characters do not auto load and will only load in using Player:LoadCharacter().</string>
+          </Properties>
+        </Item>
+        <Item class="ReflectionMetadataMember">
+          <Properties>
+            <string name="Name">EmoteSoundsEnabled</string>
+            <bool name="Browsable">true</bool>
+            <string name="summary">This decides whether or not emotes can play music within a game. If set to false, it cannot be turned back on mid game, unless republished.</string>
           </Properties>
         </Item>
       </Item>
