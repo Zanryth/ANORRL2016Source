@@ -82,7 +82,9 @@ private:
 
 // QT Studio names
 #define STUDIOQTEXENAME             "ANORRLStudioBeta.exe"
+#define STUDIOQT2013EXENAME         "ANORRL2013StudioBeta.exe"
 #define STUDIOBOOTSTAPPERNAMEBETA   "ANORRLStudioLauncherBeta.exe"
+#define STUDIO2013BOOTSTAPPERNAMEBETA   "ANORRL2013StudioLauncherBeta.exe"
 #define STUDIO2013QTLINKNAME_CUR    "ANORRL Studio 2013"
 #define STUDIOQTLINKNAME_CUR        "ANORRL Studio"
 #define STUDIOQTLINKNAME            "ROBLOX Studio Beta"

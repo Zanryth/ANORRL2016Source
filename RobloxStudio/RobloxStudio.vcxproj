@@ -994,6 +994,9 @@ xcopy /E /Y "$(SolutionDir)BuiltInPlugins" "$(ProjectDir)$(OutDir)BuiltInPlugins
   <ItemGroup>
     <Image Include="images\ANORRLStudio.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="RobloxStudio.vcxproj" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\CustomBuildRules.targets" />
