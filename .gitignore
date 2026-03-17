@@ -19,16 +19,14 @@
 *.lai
 *.la
 *.a
-#*.lib
 
 # Executables
-*.exe
+#*.exe
 *.out
 *.app
 
 # Visual Studio Junk
 .vs/
-#*.pdb
 *.tlog
 */bin/*
 *\obj\*
