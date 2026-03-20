@@ -11,8 +11,8 @@
 #include "VersionInfo.h"
 
 // TODO - rename to just "Roblox Studio"
-static const TCHAR* BootstrapperQTStudioFileName    = _T(STUDIOBOOTSTAPPERNAMEBETA);
-static const TCHAR* RobloxStudioAppFileName         = _T(STUDIOQTEXENAME);
+static const TCHAR* BootstrapperQTStudioFileName    = _T(STUDIO2013BOOTSTAPPERNAMEBETA);
+static const TCHAR* RobloxStudioAppFileName         = _T(STUDIOQT2013EXENAME);
 static const TCHAR* BootstrapperMutexName           = _T("arl.lambda.cam/bootstrapperQT2013Studio");
 static const TCHAR* StartRobloxStudioAppMutex       = _T("arl.lambda.cam/startRobloxQT2013StudioApp");
 static const TCHAR* FriendlyName                    = _T("ANORRL 2013 Studio");
@@ -398,9 +398,9 @@ bool BootstrapperQTStudio::ProcessArg(wchar_t** args, int &pos, int count)
 
 void BootstrapperQTStudio::deleteLegacyShortcuts()
 {
-	Bootstrapper::deleteLegacyShortcuts();
+	/*Bootstrapper::deleteLegacyShortcuts();
 	deleteDesktopShortcut(logger, _T(STUDIOQTLINKNAME2013));
-	deleteProgramsShortcut(logger, isPerUser(), _T(STUDIOQTLINKNAME2013));
+	deleteProgramsShortcut(logger, isPerUser(), _T(STUDIOQTLINKNAME2013));*/
 }
 
 bool BootstrapperQTStudio::hasLegacyStudioDesktopShortcut()

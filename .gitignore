@@ -11,11 +11,6 @@
 *.gch
 *.pch
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
 # Fortran module files
 *.mod
 *.smod
@@ -24,25 +19,32 @@
 *.lai
 *.la
 *.a
-*.lib
 
 # Executables
-*.exe
+#*.exe
 *.out
 *.app
 
 # Visual Studio Junk
-*.vs/
-*.pdb
+.vs/
 *.tlog
 */bin/*
 *\obj\*
 */obj/*
 *.log
 *.exp
-*\Release\*
-*Release*
+Qt/win/Debug/*
 *\Debug\*
 *\NoOpt\*
 /cmake/android-ndk-r10e*
 /cmake/cmake-2.8.12.2-Linux-i386*
+
+# anorrl specific crap FML
+App/*.lib
+App.BulletPhysics/*/*.lib
+App.BulletPhysics/*/obj/*
+Installer/*/obj/*
+Installer/*/*/*/*.lib
+Installer/*/*/*/*.pdb
+*/*/obj/Release/*
+*/*/bin/Release/*
